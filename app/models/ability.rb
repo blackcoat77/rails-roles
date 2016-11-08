@@ -5,6 +5,8 @@ class Ability
 
     user ||= User.new
     if user.has_role? :admin
+      can :access, :rails_admin   # grant access to rails_admin
+      can :dashboard              # grant access to the dashboard
       can :manage, :all
     elsif user.has_role? :author
       can :create, Status # author can create status
